@@ -128,6 +128,11 @@ module.exports = CLI = (inputArgs, callback) ->
       default:  true
       type:     'boolean'
 
+    'singlecomment-only-at-line-start':
+      describe: "Requires single line comments to be at the line start."
+      default:  false
+      type:     'boolean'
+
     languages:
       describe: "Path to language definition file."
       default:  "#{__dirname}/languages"
@@ -200,6 +205,7 @@ module.exports = CLI = (inputArgs, callback) ->
   # Set up project-specific options as we get them.
   project.options.allowEmptyLines = !!argv['empty-lines']
   project.options.requireWhitespaceAfterToken = !!argv['whitespace-after-token']
+  project.options.singleCommentOnlyAtLineStart = !!argv['singlecomment-only-at-line-start']
   project.options.showdown = argv.showdown
   project.options.languages = argv.languages
   project.options.highlighter = argv.highlighter

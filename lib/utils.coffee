@@ -134,11 +134,13 @@ module.exports = Utils =
 
     # Enforced whitespace after the comment token
     whitespaceMatch = if options.requireWhitespaceAfterToken then '\\s' else '\\s?'
+    singleCommentAtLineStart = if options.singleCommentOnlyAtLineStart then '' else '\\s*'
 
     if language.singleLineComment?
       singleLines = @regexpEscape(language.singleLineComment).join '|'
       aSingleLine = ///
         ^\s*                        # Start a line and skip all indention.
+        #{singleCommentAtLineStart}
         (?:#{singleLines})          # Match the single-line start but don't capture this group.
         (?:                         # Also don't capture this group …
           #{whitespaceMatch}        # … possibly starting with a whitespace, but

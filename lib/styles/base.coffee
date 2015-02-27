@@ -21,6 +21,7 @@ module.exports = class Base
 
     segments = Utils.splitSource data, fileInfo.language,
       requireWhitespaceAfterToken: !!@project.options.requireWhitespaceAfterToken
+      singleCommentOnlyAtLineStart: !!@project.options.singleCommentOnlyAtLineStart
       allowEmptyLines: !!@project.options.allowEmptyLines
 
     @log.debug 'Split %s into %d segments', fileInfo.sourcePath, segments.length
